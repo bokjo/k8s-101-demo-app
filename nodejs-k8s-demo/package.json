@@ -1,0 +1,15 @@
+{
+  "name": "nodejs-k8s-demo",
+  "version": "1.0.0",
+  "description": "Demo NodeJS simple demo service for K8s presentation",
+  "main": "server.js",
+  "author": "Bojanche Stojchevski",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "start": "node src/server.js"
+  },
+  "dependencies": {
+    "express": "4.16.4"
+  }
+}
