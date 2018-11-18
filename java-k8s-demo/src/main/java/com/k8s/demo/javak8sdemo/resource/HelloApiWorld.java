@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/v1/api/java")
 public class HelloApiWorld {
 
-    InetAddress ip;
+    InetAddress host;
+    String ip;
     String hostname;
     HostInfo greeting;
 
@@ -21,9 +22,11 @@ public class HelloApiWorld {
     public HostInfo hello () {
 
         try {
-            ip = InetAddress.getLocalHost();
-            hostname = ip.getHostName();
-            this.greeting = new HostInfo(ip.toString(), hostname);
+            host = InetAddress.getLocalHost();
+            hostname = host.getHostName();
+            ip = host.getHostAddress();
+
+            this.greeting = new HostInfo(ip, hostname);
 
         } catch(UnknownHostException ex) {
             ex.printStackTrace();
