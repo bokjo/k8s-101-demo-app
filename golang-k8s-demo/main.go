@@ -27,6 +27,7 @@ func main() {
 	router.HandleFunc("/v1/api/golang/k8s", hi.hostInfo).Methods(http.MethodGet)
 
 	log.Fatal(http.ListenAndServe(port, router))
+
 }
 
 func (hi *HostInfo) hostInfo(w http.ResponseWriter, r *http.Request) {
