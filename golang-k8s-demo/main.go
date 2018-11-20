@@ -16,11 +16,13 @@ const (
 
 // HostInfo struct
 type HostInfo struct {
+	Version  string `json:"version"`
 	IP       string `json:"ip"`
 	Hostname string `json:"hostname"`
 }
 
 func main() {
+
 	router := mux.NewRouter()
 	hi := HostInfo{}
 
@@ -33,6 +35,7 @@ func main() {
 func (hi *HostInfo) hostInfo(w http.ResponseWriter, r *http.Request) {
 
 	// GHETO STYLE...
+	hi.Version = "v1"
 	hi.Hostname, _ = os.Hostname()
 
 	addrs, _ := net.LookupIP(hi.Hostname)
@@ -45,6 +48,11 @@ func (hi *HostInfo) hostInfo(w http.ResponseWriter, r *http.Request) {
 	response, _ := json.Marshal(hi)
 
 	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Credentials", "true")
+	w.Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE")
+	w.Header().Set("Access-Control-Max-Age", "3600")
+	w.Header().Set("Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With, remember-me")
 	w.WriteHeader(200)
 	w.Write(response)
 }
