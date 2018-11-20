@@ -7,7 +7,7 @@ metadata:
     kubernetes.io/ingress.class: addon-http-application-routing
 spec:
   rules:
-  - host: dotnet.service.409585cd603b43d998a0.westeurope.aksapp.io
+  - host: dotnet.service.XXXXXXXXXXXXXXXXXXXX.westeurope.aksapp.io
     http:
       paths:
       - path: /
