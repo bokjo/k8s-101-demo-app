@@ -12,13 +12,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/v1/api/java")
 public class HelloApiWorld {
-
+    
+    String version = "v1";
+    
     InetAddress host;
     String ip;
     String hostname;
     HostInfo greeting;
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "*")
     @GetMapping("/k8s")
     @ResponseBody
     public HostInfo hello () {
@@ -28,7 +30,7 @@ public class HelloApiWorld {
             hostname = host.getHostName();
             ip = host.getHostAddress();
 
-            this.greeting = new HostInfo(ip, hostname);
+            this.greeting = new HostInfo(version, ip, hostname);
 
         } catch(UnknownHostException ex) {
             ex.printStackTrace();
