@@ -17,11 +17,12 @@ namespace dotnetcore_k8s_demo.Controllers
         string Ip = Dns.GetHostEntry(Dns.GetHostName()).AddressList.
             Where(ip => ip.AddressFamily == AddressFamily.InterNetwork).First().ToString(); 
 
+         string Version = "v1";
         // GET api/values
         [HttpGet]
         public ActionResult<HostInfo> Get()
         {
-            return new HostInfo(Ip, Hostname);
+            return new HostInfo(Ip, Hostname, Version);
         }
 
         // GET api/values/5

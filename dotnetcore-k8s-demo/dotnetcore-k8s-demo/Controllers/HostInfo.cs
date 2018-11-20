@@ -4,10 +4,12 @@
     {
         public string Ip { get; set; }
         public string Hostname { get; set; }
+        public string Version { get; set; }
 
-        public HostInfo(string Ip, string Hostname) {
+        public HostInfo(string Ip, string Hostname, string Version) {
             this.Ip = Ip;
             this.Hostname = Hostname;
+            this.Version = Version;
         }
     }
 }
