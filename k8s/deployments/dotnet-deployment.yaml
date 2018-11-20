@@ -1,0 +1,23 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: dotnet-deployment
+  labels: 
+    app: dotnet
+spec:
+  selector:
+    matchLabels:
+      app: dotnet
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: dotnet
+    spec:
+      containers:
+        - name: dotnet
+          image:  bokjo/dotnetcore-k8s-demo:latest
+          imagePullPolicy: Always
+          ports:
+          - name:  dotnet-service
+            containerPort: 80

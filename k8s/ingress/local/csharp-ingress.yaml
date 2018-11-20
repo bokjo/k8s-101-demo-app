@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: dotnet-ingress
+  namespace: default
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: dotnet.service
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: dotnet-service
+          servicePort: 80

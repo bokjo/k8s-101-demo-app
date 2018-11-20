@@ -1,0 +1,23 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: nodejs-deployment
+  labels: 
+    app: nodejs
+spec:
+  selector:
+    matchLabels:
+      app: nodejs
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: nodejs
+    spec:
+      containers:
+        - name: nodejs
+          image:  bokjo/nodejs-k8s-demo:latest
+          imagePullPolicy: Always
+          ports:
+          - name:  nodejs-service
+            containerPort: 3000

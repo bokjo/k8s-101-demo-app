@@ -1,0 +1,23 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: java-deployment
+  labels: 
+    app: java
+spec:
+  selector:
+    matchLabels:
+      app: java
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: java
+    spec:
+      containers:
+        - name: java
+          image:  bokjo/java-k8s-demo:latest
+          imagePullPolicy: Always
+          ports:
+          - name:  java-service
+            containerPort: 8080

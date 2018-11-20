@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: java-ingress
+  namespace: default
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: java.service
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: java-service
+          servicePort: 8080

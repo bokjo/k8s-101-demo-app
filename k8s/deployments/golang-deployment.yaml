@@ -1,0 +1,23 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: golang-deployment
+  labels: 
+    app: golang
+spec:
+  selector:
+    matchLabels:
+      app: golang
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: golang
+    spec:
+      containers:
+        - name: golang
+          image:  bokjo/golang-k8s-demo:latest
+          imagePullPolicy: Always
+          ports:
+          - name:  golang-service
+            containerPort: 1234

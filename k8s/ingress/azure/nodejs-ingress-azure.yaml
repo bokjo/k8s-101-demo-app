@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: nodejs-ingress
+  namespace: default
+  annotations:
+    kubernetes.io/ingress.class: addon-http-application-routing
+spec:
+  rules:
+  - host: nodejs.service.XXXXXXXXXXXXXXXXXXXX.westeurope.aksapp.io
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: nodejs-service
+          servicePort: 3000

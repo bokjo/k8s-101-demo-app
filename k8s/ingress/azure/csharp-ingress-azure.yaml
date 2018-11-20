@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: dotnet-ingress
+  namespace: default
+  annotations:
+    kubernetes.io/ingress.class: addon-http-application-routing
+spec:
+  rules:
+  - host: dotnet.service.409585cd603b43d998a0.westeurope.aksapp.io
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: dotnet-service
+          servicePort: 80

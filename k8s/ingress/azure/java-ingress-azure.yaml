@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: java-ingress
+  namespace: default
+  annotations:
+    kubernetes.io/ingress.class: addon-http-application-routing
+spec:
+  rules:
+  - host: java.service.XXXXXXXXXXXXXXXXXXXX.westeurope.aksapp.io
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: java-service
+          servicePort: 8080
