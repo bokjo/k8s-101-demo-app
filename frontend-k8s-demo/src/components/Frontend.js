@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import logo from '../images/react.svg' 
+import logo from '../images/react.svg';
+import os from 'os';
 
 export default class Frontend extends Component {
     
@@ -8,9 +9,8 @@ export default class Frontend extends Component {
 
         this.state = {
             hostinfo: {
-                "version": "N/A",
-                "ip": "N/A",
-                "hostname": "N/A"
+                "version": "v1",
+                "hostname": os.hostname()
             }
         }
     }

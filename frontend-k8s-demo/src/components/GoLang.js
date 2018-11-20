@@ -17,8 +17,8 @@ export default class Golang extends Component {
     }
 
     componentWillMount() {
-        
-        fetch("http://localhost:1234/v1/api/golang/k8s")
+        // fetch("http://golang.service.XXXXXXXXXXXXXXXXXXXX.westeurope.aksapp.io/v1/api/golang/k8s") // Azure Hack
+        fetch("http://golang.service/v1/api/golang/k8s")
         .then((res) => {
             return res.json();
         })
@@ -26,7 +26,7 @@ export default class Golang extends Component {
             console.log(data);
             this.setState({
                 hostinfo: {
-                    "version": "N/A",
+                    "version": data.version,
                     "ip": data.ip,
                     "hostname": data.hostname
                 }

@@ -18,8 +18,8 @@ export default class Charp extends Component {
     }
 
     componentWillMount() {
-        
-        fetch("http://localhost:8080/v1/api/csharp/k8s")
+        //fetch("http://dotnet.service.XXXXXXXXXXXXXXXXXXXX.westeurope.aksapp.io/v1/api/csharp/k8s") // Azure Hack
+         fetch("http://dotnet.service/v1/api/csharp/k8s")                                           // Local
         .then((res) => {
             return res.json();
         })
@@ -27,7 +27,7 @@ export default class Charp extends Component {
             console.log(data);
             this.setState({
                 hostinfo: {
-                    "version": "N/A",
+                    "version": data.version,
                     "ip": data.ip,
                     "hostname": data.hostname
                 }

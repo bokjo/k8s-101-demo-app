@@ -17,8 +17,8 @@ export default class Java extends Component {
     }
 
     componentWillMount() {
-        
-        fetch("http://localhost:8080/v1/api/java/k8s")
+        //fetch("http://java.service.XXXXXXXXXXXXXXXXXXXX.westeurope.aksapp.io/v1/api/java/k8s") // Azure Hack
+        fetch("http://java.service/v1/api/java/k8s")
         .then((res) => {
             return res.json();
         })
@@ -26,7 +26,7 @@ export default class Java extends Component {
             console.log(data);
             this.setState({
                 hostinfo: {
-                    "version": "N/A",
+                    "version": data.version,
                     "ip": data.ip,
                     "hostname": data.hostname
                 }
